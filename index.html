@@ -6,8 +6,8 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="phaser.min.js"></script>
     <script>
-    //Dimensiones del juego (Ancho,Alto)
-var game = new Phaser.Game(720,420,Phaser.AUTO,{preload: preload, create: create, update: update});
+  //Dimensiones del juego (Ancho,Alto)
+var game = new Phaser.Game(1920,1200,Phaser.AUTO,{preload: preload, create: create, update: update});
 
 // Preload, todo lo que se encuentre dentro de esta funcion se ejecutará mientras se cargan los componentes
 
@@ -18,7 +18,6 @@ game.load.image('BlockD', 'Sprites/Blocks/Block_D.gif');
 game.load.image('Lava1', 'Sprites/Blocks/Lava1.gif');
 game.load.image('Lava2', 'Sprites/Blocks/Lava2.gif');
 game.load.image('Bg','Sprites/Background/Background.jpg');
-game.load.spritesheet('Mario','Sprites/Pj/Mario.png')
 // 'Id','Ruta',Ancho,Alto,Numero de imagenes (-1 la busca automaticamente),espacio entre imagenes, espacio del margen
 game.load.spritesheet('Goomba','Sprites/Enemy/Goomba.gif', 32, 32,2,0,0);
 game.load.spritesheet('Goomba','Sprites/Enemy/Spiny.png', 16, 16,2,0,0);
@@ -39,21 +38,19 @@ var VSpiny = [];
 
 //Create, todo lo que se encuentre aqui se ejecutara cuando se haya cargado todo
 function create(){
-	// Cargar las fisicas para un juego arcade
-game.physics.startSystem(Phaser.Physics.ARCADE); //Agregar fisicas arcade
-game.add.sprite(0, 0,'Bg'); //Colocar un background
-game.world.setBounds(0, 0, 1920, 1200);//Configurar limites
-jugador = game.add.sprite(32, game.world.height - 350, 'Mario');//Añadir obj personaje
-jugador.body.collideWorldBounds = true; // Colisionar con los bordes ?
+  // Cargar las fisicas para un juego arcade
+game.physics.startSystem(Phaser.Physics.ARCADE);
+game.add.sprite(0, 0,'Bg');
 }
 
 
-//Update, un loop equivalente a un step 
+//Update, un loop equivalente a un step en gamemaker
 function update(){
 
 
 
 }
+
 	
 
     </script>
