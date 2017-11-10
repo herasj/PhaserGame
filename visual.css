@@ -1,0 +1,12 @@
+html, body{
+  overflow: hidden;
+  margin: 1000;
+  padding: 1000;
+}
+
+/*
+@font-face{
+    font-family: 'NombreDeLaFuente';
+    src: local('NombreDeLaFuente'), url('fonts/fuente.woff') format('woff');
+}
+*/
