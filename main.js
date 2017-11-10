@@ -1,6 +1,7 @@
 //Dimensiones del juego (Ancho,Alto)
  var juego = new Phaser.Game(768, 1000, Phaser.AUTO, '', ({preload: preload, create: create, update: update, render: render});
-
+//Error corregido
+                             
 // Preload, todo lo que se encuentre dentro de esta funcion se ejecutará mientras se cargan los componentes
 
 function preload(){
