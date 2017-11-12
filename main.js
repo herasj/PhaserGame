@@ -10,7 +10,7 @@ juego.load.image('Block','Sprites/Blocks/Block1.gif');
 juego.load.image('BlockD', 'Sprites/Blocks/Block_D.gif');
 juego.load.image('Bg','Sprites/Background/Background.jpg');
 // 'Id','Ruta',Ancho,Alto,Numero de imagenes (-1 la busca automaticamente),espacio entre imagenes, espacio del margen
-juego.load.spritesheet('Spiny','Sprites/Enemy/Spiny.png', 16, 16,2,0,0);  
+juego.load.spritesheet('Spiny','Sprites/Enemy/Spiny_1.png', 16, 16,2,0,0);  
 juego.load.spritesheet('Pj','Sprites/Pj/Mario.png',16,16,7,4,1)
 
 }
@@ -30,17 +30,20 @@ var VSpiny = [];
 //Create, todo lo que se encuentre aqui se ejecutara cuando se haya cargado todo
 function create(){
   // Cargar las fisicas para un juego arcade
+ juego.add.sprite(0, 0, 'Block');
+ juego.add.sprite(100, 100, 'BlockD');
 juego.physics.startSystem(Phaser.Physics.ARCADE);
 juego.world.setBounds(0, 0, 768, 1000); //Establecer limites del juego
 Bloque = juego.add.group();
 Bloque.enableBody = true;
-for (var i = 0 ; i >24; i++) {
+var piso = Bloque.create(32,32 , 'Block');
+/*for (var i = 0 ; i >24; i++) {
   //Llenar piso de bloques
   PosBlock=32*i;
   var piso = Bloque.create(PosBlock,32 , 'Block');
   //juego.add.sprite (PosBlock, 0, 'Block');
-}
-piso.body.immovable = true; //No se puede mover
+}*/
+//piso.body.immovable = true; //No se puede mover
 Bloque.body.immovable = true;
 
 Jugador = juego.add.sprite(32,40, 'Pj');//Añadir jugador
