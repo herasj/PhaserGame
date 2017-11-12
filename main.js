@@ -71,8 +71,8 @@ juego.physics.arcade.collide(Jugador, plataformas);
 if (Tecla.right.isDown)// Si presionamos RIGHT
 {
  //  Mover a la derecha
-jugador.body.velocity.x = 150;
-jugador.animations.play('right');
+Jugador.body.velocity.x = 150;
+Jugador.animations.play('right');
 }
 else{
   Jugador.animation.stop();
