@@ -4,6 +4,10 @@ html, body{
   padding: 1000;
 }
 
+canvas{
+  margin: auto;
+}
+
 /*
 @font-face{
     font-family: 'NombreDeLaFuente';
