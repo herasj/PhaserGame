@@ -1,4 +1,4 @@
-//Dimensiones del juego (Ancho,Alto)
+﻿//Dimensiones del juego (Ancho,Alto)
  var juego = new Phaser.Game(768, 1000, Phaser.AUTO, '', {preload: preload, create: create, update: update});
 //Error corregido
 
@@ -202,10 +202,7 @@ else{
 	}
   juego.physics.arcade.overlap(Jugador,Moneda, AddPuntos, null, this);
   juego.physics.arcade.overlap(Jugador,Bloque,TestChoque,null,this);
-if (Tecla.R.isDown) {
-  game.state.start('main');
-  console.log("Restart");
-}
+
 }
 
 function TestChoque (Jugador,Bloque){
