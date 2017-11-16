@@ -306,7 +306,8 @@ function update(){
   juego.physics.arcade.overlap(BlockT,Moneda,Nocoins,null,this);
   juego.physics.arcade.overlap(Jugador,Ball,GameOver,null,this);
   juego.physics.arcade.overlap(CBlaster,Moneda,Nocoins,null,this);
-
+  juego.physics.arcade.overlap(Jugador,Princesa,Coli_P,null,this);
+  juego.physics.arcade.overlap(Princesa,Moneda,Nocoins,null,this);
 Cont=Cont+1;
 var randomV= Math.random()*550;
 while (randomV<200){
