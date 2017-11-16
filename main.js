@@ -250,6 +250,7 @@ function update(){
   // Colision
   juego.physics.arcade.collide(Jugador,Bloque);
   juego.physics.arcade.collide(Jugador,Bloqueo);
+  juego.physics.arcade.collide(Ball,Bloque);
 //Colision con Moneda
 
 
@@ -296,8 +297,8 @@ CBall.body.velocity.x = -300;
 CBall.body.collideWorldBounds = true;//Colision con los bordes
 CBall.body.bounce.x = 300; //El Jugador no puede rebotar
 CBall.body.gravity.y = 900;//Gravedad del Jugador
-
-
+CBall.animations.add('BallN', [0,1], 20, true);
+CBall.animatios.play('BallN');
   juego.physics.arcade.overlap(Jugador,Moneda, AddPuntos, null, this);
   //juego.physics.arcade.overlap(Jugador,Bloque,TestChoque,null,this);
   juego.physics.arcade.overlap(Jugador,Estrella,KillStar,null,this);
