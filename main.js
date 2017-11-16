@@ -248,7 +248,7 @@ CJefe.animations.add('B',[2,3,0,1],7,true);
 CJefe.animations.add('Ataque',[0,1],7,true);
 CJefe.animations.play('B');
 
-CPrincesa= Princesa.create(736,124,'s_Prin');
+CPrincesa= Princesa.create(750,124,'s_Prin');
 CPrincesa.scale.setTo(1.5,1.5);
 //Añadir animaciones
 
