@@ -238,7 +238,7 @@ Tecla = juego.input.keyboard.createCursorKeys();
 var LocacionPtos = juego.add.sprite(0, 0);
 LocacionPtos.fixedToCamera = true;
 // juego.add.text(juego.world.width-100, 16, 'Score', {fontSize: '27px', fill: 'white'});
- Txt = juego.add.text(juego.world.width-180, 22, 'Puntos: 0', {fontSize: '27px', fill: 'white',font-family: 'Pixeled'});
+ Txt = juego.add.text(juego.world.width-180, 22, 'Puntos: 0', {fontSize: '27px', fill: 'white',fontFamily: 'Pixeled'});
 sndBg.play();
 }
 
