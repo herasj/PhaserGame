@@ -58,6 +58,7 @@ var Star;
 var Bloqueo;
 var CBloqueo;
 var Boom;
+var Balltime;
 var NumStar=0;
 //Create, todo lo que se encuentre aqui se ejecutara cuando se haya cargado todo
 function create(){
@@ -236,8 +237,8 @@ Jugador.animations.add('mario'[0],10,true);
 Tecla = juego.input.keyboard.createCursorKeys();
 var LocacionPtos = juego.add.sprite(0, 0);
 LocacionPtos.fixedToCamera = true;
-juego.add.text(juego.world.width-100, 16, 'Score', {fontSize: '27px', fill: 'white'});
- Txt = juego.add.text(juego.world.width-80, 40, '0', {fontSize: '27px', fill: 'white'});
+// juego.add.text(juego.world.width-100, 16, 'Score', {fontSize: '27px', fill: 'white'});
+ Txt = juego.add.text(juego.world.width-160, 22, 'Puntos: 0', {fontSize: '27px', fill: 'white'});
 sndBg.play();
 }
 
@@ -291,7 +292,9 @@ else{
 
   }
 //  piso = Bloque.create(PosBlock,984,'Block');
-CBall= Ball.create(Jefe.x,Jefe.y,'FB');
+
+	
+	/*CBall= Ball.create(Jefe.x,Jefe.y,'FB');
 juego.physics.arcade.enable(CBall);//Activar fisicas al Jugador
 CBall.body.velocity.x = -300;
 CBall.body.collideWorldBounds = true;//Colision con los bordes
@@ -299,6 +302,8 @@ CBall.body.bounce.x = 300; //El Jugador no puede rebotar
 CBall.body.gravity.y = 900;//Gravedad del Jugador
 CBall.animations.add('BallN', [0,1], 20, true);
 CBall.animatios.play('BallN');
+	
+	*/
   juego.physics.arcade.overlap(Jugador,Moneda, AddPuntos, null, this);
   //juego.physics.arcade.overlap(Jugador,Bloque,TestChoque,null,this);
   juego.physics.arcade.overlap(Jugador,Estrella,KillStar,null,this);
@@ -313,7 +318,7 @@ function Nocoins (Bloqueo,Moneda){
 function KillStar (Jugador,Estrella){
   Estrella.kill();
   Score=Score+30;
-  Txt.text=Score;
+  Txt.text='Score'+Score;
   snd1up.play();
   NumStar=NumStar+1;
 
@@ -338,7 +343,7 @@ sndchoque.play();
 function AddPuntos (Jugador,Moneda){
   Moneda.kill();
   Score=Score+10;
-  Txt.text=Score;
+  Txt.text='Score'+Score;
   sndCoin.play();
 
 
