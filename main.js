@@ -290,12 +290,13 @@ else{
 
   }
 //  piso = Bloque.create(PosBlock,984,'Block');
-//CBall= Ball.create(Jefe.x,Jefe.y,'FB');
-//juego.physics.arcade.enable(Ball);//Activar fisicas al Jugador
+CBall= Ball.create(Jefe.x,Jefe.y,'FB');
+juego.physics.arcade.enable(CBall);//Activar fisicas al Jugador
+CBall.body.velocity.x = -300;
+CBall.body.collideWorldBounds = true;//Colision con los bordes
+CBall.body.bounce.x = 300; //El Jugador no puede rebotar
+CBall.body.gravity.y = 900;//Gravedad del Jugador
 
-//Ball.body.bounce.y = 0; //El Jugador no puede rebotar
-//Ball.body.gravity.y = 900;//Gravedad del Jugador
-//Ball.body.collideWorldBounds = true;//Colision con los bordes
 
   juego.physics.arcade.overlap(Jugador,Moneda, AddPuntos, null, this);
   //juego.physics.arcade.overlap(Jugador,Bloque,TestChoque,null,this);
