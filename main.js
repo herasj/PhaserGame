@@ -9,6 +9,7 @@ function preload(){
   //juego.load.image("Id","Ruta");
 juego.load.image('Block','Sprites/Blocks/Block1.gif');
 juego.load.image('BlockD', 'Sprites/Blocks/Block_D.gif');
+juego.load.image('Fin','Sprites/Background/Fin_Bg.png');
 juego.load.image('Bg','Sprites/Background/Background.jpg');
 juego.load.image('s_Blaster','Sprites/Enemy/Blaster.png');
 juego.load.image('s_Prin','Sprites/Npc/Prin.png');
@@ -472,7 +473,7 @@ function Coli_P (Jugador,Princesa){
   Princesa.kill();
   Jugador.kill();
   sndBg.stop();
-  
+  juego.add.sprite(0,0,'Fin');
 	
 
 
