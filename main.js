@@ -468,6 +468,16 @@ function AddPuntos (Jugador,Moneda){
 
 }
 
+function Coli_P (Jugador,Princesa){
+  Princesa.kill();
+  Jugador.kill();
+  sndBg.stop();
+  
+	
+
+
+}
+
 /*function Compara_Colision (Jugador,MonedaV){
   var Colisiona;
   if ((Jugador.position.y + Jugador.height) > MonedaV.position.y) {
