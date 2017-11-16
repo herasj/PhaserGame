@@ -13,10 +13,13 @@ juego.load.image('Bg','Sprites/Background/Background.jpg');
 juego.load.spritesheet('Enemies','Sprites/Enemy/Enemies.png', 32,32,-1,0,0);
 juego.load.spritesheet('Pj','Sprites/Pj/Mario.png',17,16,10,0,0);
 juego.load.spritesheet('Coin','Sprites/Npc/Coin.gif',28,32,4,1,0);
+juego.load.spritesheet('Star_s','Sprites/Npc/Star.png',14,16,4,0,0);
+juego.load.image('S_Bloqueo','Sprites/Blocks/Bloqueo.png');
 juego.load.audio('s_coin','Sfx/Coin.wav');
 juego.load.audio('s_jump','Sfx/Jump.wav');
 juego.load.audio('s_cho','Sfx/Bump.wav');
-juego.load.audio('sbg','Sfx/Underworld.mp3')
+juego.load.audio('sbg','Sfx/Underworld.mp3');
+juego.load.audio('s_star','Sfx/1up.wav');
 }
 //MonedaV
 var Jugador;
@@ -40,9 +43,14 @@ var sndCoin;
 var sndJump;
 var sndchoque;
 var sndBg;
+var snd1up;
 var Score=0;
-CMonedas=0;
-
+var CMonedas=0;
+var Estrella;
+var Star;
+var Bloqueo;
+var CBloqueo;
+var NumStar=0;
 //Create, todo lo que se encuentre aqui se ejecutara cuando se haya cargado todo
 function create(){
   // Cargar las fisicas para un juego arcade
@@ -52,15 +60,19 @@ juego.physics.startSystem(Phaser.Physics.ARCADE);
 juego.world.setBounds(0, 0, 768, 1000); //Establecer limites del juego
 Bloque = juego.add.group();
 BloqueD = juego.add.group();
+Estrella = juego.add.group();
 Moneda = juego.add.group();
+Bloqueo= juego.add.group();
 sndCoin= juego.add.audio('s_coin');
 sndJump = juego.add.audio('s_jump');
 sndchoque= juego.add.audio('s_cho');
 sndBg=juego.add.audio('sbg');
+snd1up=juego.add.audio('s_star');
 Bloque.enableBody = true;
 BloqueD.enableBody= true;
 Moneda.enableBody=true;
-
+Estrella.enableBody=true;
+Bloqueo.enableBody=true;
 /*var Pmovil= BloqueD.create(64,64,'BlockD');
 Pmovil.body.immovable=false;*/
 //var piso = Bloque.create(32,32 , 'Block');
@@ -132,8 +144,60 @@ for (var i = 0 ; i <48; i++) {
 
 //Bloque.body.immovable = true;
 
+//Estrellas :D
+Star= Estrella.create(384,904,'Star_s');
+Star.animations.add('SM',[0,1,2,3],10,true);
+Star.animations.play('SM');
+Star.scale.setTo(1.25,1.25);
+
+Star= Estrella.create(704,920,'Star_s');
+Star.animations.add('SM',[0,1,2,3],10,true);
+Star.animations.play('SM');
+Star.scale.setTo(1.25,1.25);
 
 
+Star= Estrella.create(64,680,'Star_s');
+Star.animations.add('SM',[0,1,2,3],10,true);
+Star.animations.play('SM');
+Star.scale.setTo(1.25,1.25);
+
+Star= Estrella.create(384,650,'Star_s');
+Star.animations.add('SM',[0,1,2,3],10,true);
+Star.animations.play('SM');
+Star.scale.setTo(1.25,1.25);
+
+Star= Estrella.create(704,680,'Star_s');
+Star.animations.add('SM',[0,1,2,3],10,true);
+Star.animations.play('SM');
+Star.scale.setTo(1.25,1.25);
+
+Star= Estrella.create(384,410,'Star_s');
+Star.animations.add('SM',[0,1,2,3],10,true);
+Star.animations.play('SM');
+Star.scale.setTo(1.25,1.25);
+
+Star= Estrella.create(64,320,'Star_s');
+Star.animations.add('SM',[0,1,2,3],10,true);
+Star.animations.play('SM');
+Star.scale.setTo(1.25,1.25);
+
+Star= Estrella.create(704,320,'Star_s');
+Star.animations.add('SM',[0,1,2,3],10,true);
+Star.animations.play('SM');
+Star.scale.setTo(1.25,1.25);
+
+Star= Estrella.create(64,80,'Star_s');
+Star.animations.add('SM',[0,1,2,3],10,true);
+Star.animations.play('SM');
+Star.scale.setTo(1.25,1.25);
+
+Star= Estrella.create(384,50,'Star_s');
+Star.animations.add('SM',[0,1,2,3],10,true);
+Star.animations.play('SM');
+Star.scale.setTo(1.25,1.25);
+
+CBloqueo= Bloqueo.create(620,9,'S_Bloqueo');
+CBloqueo.body.immovable = true;
 juego.physics.arcade.enable(Jugador);//Activar fisicas al Jugador
 
 Jugador.body.bounce.y = 0; //El Jugador no puede rebotar
@@ -165,6 +229,7 @@ function update(){
   Jugador.body.velocity.x = 0;
   // Colision
   juego.physics.arcade.collide(Jugador,Bloque);
+  juego.physics.arcade.collide(Jugador,Bloqueo);
 //Colision con Moneda
 
 
@@ -200,11 +265,41 @@ else{
     sndJump.play();
 
 	}
+  if(NumStar==10){
+    Bloqueo.kill()
+
+  }
+
   juego.physics.arcade.overlap(Jugador,Moneda, AddPuntos, null, this);
-  juego.physics.arcade.overlap(Jugador,Bloque,TestChoque,null,this);
+  //juego.physics.arcade.overlap(Jugador,Bloque,TestChoque,null,this);
+  juego.physics.arcade.overlap(Jugador,Estrella,KillStar,null,this);
+  juego.physics.arcade.overlap(Bloqueo,Moneda,Nocoins,null,this);
 
 }
+function Nocoins (Bloqueo,Moneda){
+  Moneda.kill();
 
+}
+function KillStar (Jugador,Estrella){
+  Estrella.kill();
+  Score=Score+30;
+  Txt.text=Score;
+  snd1up.play();
+  NumStar=NumStar+1;
+
+
+}
+function Colision_Bloqueo(Jugador,Bloqueo){
+  if(NumStar==10){
+    Bloqueo.kill()
+
+  }
+  else {
+    Jugador.body.velocity=0;
+  }
+
+
+}
 function TestChoque (Jugador,Bloque){
 if (Jugador.position.y  < Bloque.position.y+32) {
 console.log("Colisiona");
@@ -217,7 +312,7 @@ function AddPuntos (Jugador,Moneda){
   Score=Score+10;
   Txt.text=Score;
   sndCoin.play();
-  console.log(Score);
+
 
 }
 
