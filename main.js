@@ -318,7 +318,7 @@ function Nocoins (Bloqueo,Moneda){
 function KillStar (Jugador,Estrella){
   Estrella.kill();
   Score=Score+30;
-  Txt.text='Score'+Score;
+  Txt.text='Puntos: '+Score;
   snd1up.play();
   NumStar=NumStar+1;
 
@@ -343,7 +343,7 @@ sndchoque.play();
 function AddPuntos (Jugador,Moneda){
   Moneda.kill();
   Score=Score+10;
-  Txt.text='Score'+Score;
+  Txt.text='Puntos: '+Score;
   sndCoin.play();
 
 
