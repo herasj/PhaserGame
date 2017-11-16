@@ -2,15 +2,16 @@ html, body{
   overflow: hidden;
   margin: 1000;
   padding: 1000;
+  background-color: black;
 }
 
 canvas{
   margin: auto;
 }
 
-/*
+
 @font-face{
-    font-family: 'NombreDeLaFuente';
-    src: local('NombreDeLaFuente'), url('fonts/fuente.woff') format('woff');
+    font-family: 'Pixeled';
+    src: local('Pixeled'), url('Fonts/Pixeled.ttf') format('ttf');
 }
-*/
+
