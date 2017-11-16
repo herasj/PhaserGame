@@ -375,7 +375,7 @@ else{
     Bloqueo.kill()
 
   }
-
+//Barriles
   if (Cont>=randomV) {
     CBall= Ball.create(CJefe.x-20,CJefe.y+12,'FB');
     CBall.scale.setTo(1.5,1.5);
