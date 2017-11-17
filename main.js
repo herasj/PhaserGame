@@ -273,7 +273,7 @@ juego.physics.arcade.enable(CBall);//Activar fisicas al Jugador
 CBall.body.velocity.x =-290;
 CBall.body.bounce.x=1;
 CBall.body.collideWorldBounds = true;//Colision con los bordes
-//CBall.body.bounce.x = 300; //El Jugador no puede rebotar
+//CBall.body.bounce.x = 300; //Error Rebote
 CBall.body.gravity.y = 900;//Gravedad del Jugador
 CBall.animations.add('BallN', [0,1], 20, true);
 CBall.animations.play('BallN');
@@ -398,7 +398,7 @@ else{
     CBall.body.velocity.x =-290;
     CBall.body.bounce.x=1;
     CBall.body.collideWorldBounds = true;//Colision con los bordes
-    //CBall.body.bounce.x = 300; //El Jugador no puede rebotar
+    //CBall.body.bounce.x = 300; ////Error Rebote
     CBall.body.gravity.y = 900;//Gravedad del Jugador
     CBall.animations.add('BallN', [0,1], 20, true);
     CBall.animations.play('BallN');
@@ -409,7 +409,7 @@ else{
     CBall.body.velocity.x =380;
     CBall.body.bounce.x=1;
     CBall.body.collideWorldBounds = true;//Colision con los bordes
-    //CBall.body.bounce.x = 300; //El Jugador no puede rebotar
+    //CBall.body.bounce.x = 300; ////Error Rebote
     CBall.body.gravity.y = 900;//Gravedad del Jugador
     CBall.animations.add('BallN', [0,1], 20, true);
     CBall.animations.play('BallN');
