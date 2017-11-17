@@ -9,7 +9,6 @@ function preload(){
 juego.load.image('Block','Sprites/Blocks/Block1.gif');
 juego.load.image('BlockD', 'Sprites/Blocks/Block_D.gif');
 juego.load.image('Fin','Sprites/Background/Fin_Bg.png');
-juego.load.image('Load','Sprites/Background/Load.jpg');
 juego.load.image('s_Blaster','Sprites/Enemy/Blaster.png');
 juego.load.image('s_Prin','Sprites/Npc/Prin.png');
 // 'Id','Ruta',Ancho,Alto,Numero de imagenes (-1 la busca automaticamente),espacio entre imagenes, espacio del margen
