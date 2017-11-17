@@ -7,6 +7,11 @@ juego.state.add('State1', P2Game.State);
 
 function preload(){
   //juego.load.image("Id","Ruta");
+var progress = game.add.graphics(380,500);
+game.load.onFileComplete.add(function(prg){
+progress.beginFill(#ffffff);
+progress.drawRect(0,0, prg*4.8,100);
+progress.endFill();
 juego.load.image('Block','Sprites/Blocks/Block1.gif');
 juego.load.image('BlockD', 'Sprites/Blocks/Block_D.gif');
 juego.load.image('Fin','Sprites/Background/Fin_Bg.png');
