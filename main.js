@@ -393,7 +393,7 @@ else{
     CBall= Ball.create(CBlaster.x+40,CBlaster.y+15,'FB2');
     CBall.scale.setTo(1.5,1.5);
     juego.physics.arcade.enable(CBall);//Activar fisicas al Jugador
-    CBall.body.velocity.x =320;
+    CBall.body.velocity.x =380;
     CBall.body.bounce.x=1;
     CBall.body.collideWorldBounds = true;//Colision con los bordes
     //CBall.body.bounce.x = 300; //El Jugador no puede rebotar
