@@ -353,6 +353,11 @@ else{
 	}
 
 }
+	if(!Jugador.body.touching.down){
+		Jugador.animations.stop();
+	}
+	
+	
 	if(Tecla.up.isDown && Jugador.body.touching.down ){
     Jugador.body.velocity.y= -450;
     sndJump.play();
