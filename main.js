@@ -9,7 +9,7 @@ function preload(){
   //juego.load.image("Id","Ruta");
 var progress = game.add.graphics(380,500);
 game.load.onFileComplete.add(function(prg){
-progress.beginFill(#ffffff);
+progress.beginFill(0xFF3300);
 progress.drawRect(0,0, prg*4.8,100);
 progress.endFill();
 juego.load.image('Block','Sprites/Blocks/Block1.gif');
