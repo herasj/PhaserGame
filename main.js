@@ -349,11 +349,14 @@ else{
 
 	}
 	else{
+		if(Jugador.body.touching.down){
 		if(Der==true)
 		Jugador.animations.play('marior');
 		
 		if(Der==false)
 		Jugador.animations.play('mariol');
+		}
+
 		
 		Jugador.animations.stop();
 
