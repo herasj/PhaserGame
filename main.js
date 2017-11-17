@@ -36,7 +36,7 @@ juego.load.audio('s_star','Sfx/1up.wav');
 juego.load.audio('s_boom','Sfx/Boom.wav');
 juego.load.audio('s_die','Sfx/Die.wav')
 	
-juego.add.sprite(0,0,'Load');
+
 }
 //MonedaV
 var Princesa;
