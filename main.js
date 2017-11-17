@@ -71,7 +71,7 @@ var CBloqueo;
 var Boom;
 var Cont=0;
 var NumStar=0;
-var Der;
+var Der=true;
 var Anim;
 var Cont2;
 //Create, todo lo que se encuentre aqui se ejecutara cuando se haya cargado todo
@@ -257,7 +257,8 @@ Jugador.animations.add('right', [0,6,7,8], 10, true);
 Jugador.animations.add('left', [4,3,2,1], 10, true);
 Jugador.animations.add('jumpl', [5], 10, true);
 Jugador.animations.add('jumpr', [9], 10, true);
-Jugador.animations.add('mario'[0],10,true);
+Jugador.animations.add('marior'[0],10,true);
+Jugador.animations.add('mariol'[4],10,true);
 Tecla = juego.input.keyboard.createCursorKeys();
 var LocacionPtos = juego.add.sprite(0, 0);
 LocacionPtos.fixedToCamera = true;
@@ -348,6 +349,12 @@ else{
 
 	}
 	else{
+		if(Der==true)
+		Jugador.animations.play('marior');
+		
+		if(Der==false)
+		Jugador.animations.play('mariol');
+		
 		Jugador.animations.stop();
 
 	}
