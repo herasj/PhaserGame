@@ -17,6 +17,8 @@ juego.load.spritesheet('Star_s','Sprites/Npc/Star.png',14,16,4,0,0);
 juego.load.spritesheet('Bowser','Sprites/Enemy/Bowser.png',32,32,4,0,0);
 juego.load.spritesheet('FB','Sprites/Enemy/Ball.png',14,16,2,0,0);
 juego.load.spritesheet('FB2','Sprites/Enemy/Ball2.png',14,16,2,0,0);
+juego.load.spritesheet('FBR','Sprites/Enemy/RBall.png',14,16,10,0,0);
+juego.load.image('S_Pipe','Sprites/Blocks/Pipe.png');
 juego.load.image('S_Bloqueo','Sprites/Blocks/Bloqueo.png');
 juego.load.image('S_BlockT','Sprites/Blocks/Test.png');
 juego.load.audio('s_coin','Sfx/Coin.wav');
@@ -26,10 +28,14 @@ juego.load.audio('sbg','Sfx/Underworld.mp3');
 juego.load.audio('s_star','Sfx/1up.wav');
 juego.load.audio('s_boom','Sfx/Boom.wav');
 juego.load.audio('s_die','Sfx/Die.wav')
-	
+
 
 }
 //MonedaV
+var RBall;
+var CRBall;
+var Pipe;
+var CPipe;
 var Princesa;
 var CPrincesa;
 var Blaster;
@@ -91,6 +97,8 @@ Ball = juego.add.group();
 BlockT= juego.add.group();
 Princesa=juego.add.group();
 Bloqueo= juego.add.group();
+RBall=juego.add.group();
+Pipe=juego.add.group();
 sndCoin= juego.add.audio('s_coin');
 sndJump = juego.add.audio('s_jump');
 sndchoque= juego.add.audio('s_cho');
@@ -107,6 +115,9 @@ Moneda.enableBody=true;
 Estrella.enableBody=true;
 Bloqueo.enableBody=true;
 Jefe.enableBody=true;
+Pipe.enableBody=true;
+Ball.enableBody=true;
+RBall.enableBody=true;
 
 /*var Pmovil= BloqueD.create(64,64,'BlockD');
 Pmovil.body.immovable=false;*/
@@ -278,6 +289,7 @@ CBall.body.gravity.y = 900;//Gravedad del Jugador
 CBall.animations.add('BallN', [0,1], 20, true);
 CBall.animations.play('BallN');
 
+
 //TEST
 CBlockT=BlockT.create(0,952,'S_BlockT');
 CBlockT.body.immovable=true;
@@ -291,9 +303,26 @@ CBlockT.scale.setTo(0.1,1);
 CBlockT=BlockT.create(765,952,'S_BlockT');
 CBlockT.body.immovable=true;
 CBlockT.scale.setTo(0.1,1);
+
+CPipe= Pipe.create(384,0,'S_Pipe');
+CPipe.body.immovable=true;
+CPipe.scale.setTo(0.7,0.7);
+console.log("Creado");
+
+CRBall= RBall.create(CPipe.x,CPipe.y,'FBR');
+juego.physics.arcade.enable(CRBall);//Activar fisicas al Jugador
+
+CRBall.body.velocity.x =-400;
+CRBall.body.bounce.x=1;
+CRBall.body.collideWorldBounds = true;//Colision con los bordes
+CRBall.body.gravity.y = 900;//Gravedad del Jugador
+CRBall.animations.add('BallR', [0,1,2,3,4,5,6,7,8,9], 20, true);
+CRBall.animations.play('BallR');
+CRBall.scale.setTo(1.5,1.5);
 }
-
-
+var CR=0;
+var VelR=0;
+var dir=0;
 //Update, un loop equivalente a un step en juegomaker
 function update(){
 
@@ -304,24 +333,33 @@ function update(){
   juego.physics.arcade.overlap(Jefe,Moneda,Nocoins,null,this);
   juego.physics.arcade.overlap(BlockT,Moneda,Nocoins,null,this);
   juego.physics.arcade.overlap(Jugador,Ball,GameOver,null,this);
+  juego.physics.arcade.overlap(Jugador,RBall,GameOver,null,this);
   juego.physics.arcade.overlap(CBlaster,Moneda,Nocoins,null,this);
   juego.physics.arcade.overlap(Jugador,Princesa,Coli_P,null,this);
   juego.physics.arcade.overlap(Princesa,Moneda,Nocoins,null,this);
+  dir=Math.random()*3;
+
+
+console.log(VelR);
+  CR=CR+Math.random()*2;
 Cont=Cont+1;
+
 var randomV= Math.random()*550;
+
 while (randomV<200){
   randomV= Math.random()*550;
 }
 
 
 
-console.log(Cont);
+
 //  Reseteamos la velocidad del Jugador en x, esto nos permitirá evitar que se acelere
   Jugador.body.velocity.x = 0;
   // Colision
   juego.physics.arcade.collide(Jugador,Bloque);
   juego.physics.arcade.collide(Jugador,Bloqueo);
   juego.physics.arcade.collide(Ball,Bloque);
+  juego.physics.arcade.collide(RBall,Bloque);
 //  juego.physics.arcade.collide(Ball,BlockT);
 //Colision con Moneda
 
@@ -352,12 +390,12 @@ else{
 		if(Jugador.body.touching.down){
 		if(Der==true)
 		Jugador.animations.play('marior');
-		
+
 		if(Der==false)
 		Jugador.animations.play('mariol');
 		}
 
-		
+
 		Jugador.animations.stop();
 
 	}
@@ -366,8 +404,8 @@ else{
 	if(!Jugador.body.touching.down){
 		Jugador.animations.stop();
 	}
-	
-	
+
+
 	if(Tecla.up.isDown && Jugador.body.touching.down ){
     Jugador.body.velocity.y= -450;
     sndJump.play();
@@ -418,7 +456,44 @@ else{
 
   }
 
+  if (CR>=100) {
+    if (dir>1.5) {
 
+      VelR=Math.random()*400;
+
+      while (VelR<280){
+      VelR=Math.random()*400;
+
+      }
+
+    }
+    if (dir<=1.5) {
+
+
+      VelR=Math.random()*-400;
+
+      while (VelR<-280){
+      VelR=Math.random()*-400;
+    }
+
+  }
+
+    CRBall= RBall.create(CPipe.x+5,CPipe.y+22,'FBR');
+    juego.physics.arcade.enable(CRBall);//Activar fisicas al Jugador
+
+    CRBall.body.velocity.x =-400;
+    CRBall.body.bounce.x=1;
+    CRBall.body.collideWorldBounds = true;//Colision con los bordes
+    CRBall.body.gravity.y = 900;//Gravedad del Jugador
+    CRBall.animations.add('BallR', [0,1,2,3,4,5,6,7,8,9], 20, true);
+    CRBall.animations.play('BallR');
+    //CRBall.scale.setTo(1.5,1.5);
+
+
+
+    CR=0;
+
+  }
 
 
 
@@ -488,7 +563,7 @@ function Coli_P (Jugador,Princesa){
   Jugador.kill();
   sndBg.stop();
   juego.add.sprite(0,0,'Fin');
-	
+
 
 
 }
