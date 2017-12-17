@@ -478,6 +478,9 @@ else{
 
   }
 
+   /*
+              Necesita arreglo :D
+	      
     CRBall= RBall.create(CPipe.x+5,CPipe.y+22,'FBR');
     juego.physics.arcade.enable(CRBall);//Activar fisicas al Jugador
 
@@ -488,7 +491,7 @@ else{
     CRBall.animations.add('BallR', [0,1,2,3,4,5,6,7,8,9], 20, true);
     CRBall.animations.play('BallR');
     //CRBall.scale.setTo(1.5,1.5);
-
+*/
 
 
     CR=0;
